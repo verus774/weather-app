@@ -26,7 +26,7 @@ class controller {
     }
 
     onCloseClick(id) {
-        console.log(id);
+        this.weathers = this.weathers.filter(item => item.id !== id);
     }
 }
 
