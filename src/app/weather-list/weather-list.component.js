@@ -8,12 +8,10 @@ class controller {
 
     $onInit() {
         this.weathers = [];
-        this.currLocation = '';
-        this.weatherService.getLocations().then(locations => this.locations = locations);
     }
 
-    onAddClick() {
-        this.weatherService.getWeatherByLocation(this.currLocation)
+    onLocationSelect(location) {
+        this.weatherService.getWeatherByLocation(location)
             .then(weather => {
                 this.weathers.push(weather);
             });
