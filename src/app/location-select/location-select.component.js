@@ -13,7 +13,9 @@ class controller {
     }
 
     onAddClick() {
-        this.onLocationSelect({location: this.currLocation});
+        if (this.currLocation) {
+            this.onLocationSelect({location: this.currLocation});
+        }
     }
 }
 

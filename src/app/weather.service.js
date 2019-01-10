@@ -1,32 +1,35 @@
 export default ($http, $q) => {
-    const weathers = [
-        {
-            id: '1',
-            location: 'Minsk',
-            img: 'assets/img/sunny.png',
-            temp: 25,
-        },
-        {
-            id: '2',
-            location: 'Paris',
-            img: 'assets/img/rain.png',
-            temp: 20,
-        },
-        {
-            id: '3',
-            location: 'London',
-            img: 'assets/img/clouds.png',
-            temp: 15,
-        },
-    ];
+    const API_KEY = 'm17GZoZVsXK9gBqlzqWNoIfx71LVRF4S';
+    const API_URL = 'http://dataservice.accuweather.com';
+    const ICONS_URL = 'https://developer.accuweather.com/sites/default/files';
+
+    const locations = ['Minsk', 'Paris', 'London', 'New York'];
+
+    const getLocationKey = location => {
+        return $http.get(`${API_URL}/locations/v1/cities/search?apikey=${API_KEY}&q=${location}`)
+            .then(res => res.data[0].Key)
+            .catch(console.log);
+    };
+
+    const mapWeatherResponse = (res, location) => {
+        const img = res.WeatherIcon < 10 ? "0" + res.WeatherIcon : res.WeatherIcon;
+
+        return {
+            temp: res.Temperature.Value,
+            img: `${ICONS_URL}/${img}-s.png`,
+            location,
+        }
+    };
 
     const getWeatherByLocation = location => {
-        const weather = weathers.find(item => item.location.toLowerCase() === location.toLowerCase());
-        return $q.when(weather);
+        return getLocationKey(location)
+            .then(locationKey => $http.get(`${API_URL}/forecasts/v1/hourly/1hour/${locationKey}?apikey=${API_KEY}&metric=true`))
+            .then(res => res.data[0])
+            .then(res => mapWeatherResponse(res, location))
+            .catch(console.log);
     };
 
     const getLocations = () => {
-        const locations = weathers.map(weather => weather.location);
         return $q.when(locations);
     };
 
