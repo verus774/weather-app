@@ -1,1 +1,8 @@
-<h1>Hello, world</h1>
+<h1>Weather app</h1>
+
+<weather-item
+        ng-repeat="weather in $ctrl.weathers track by weather.id"
+        weather="weather"
+        on-close="$ctrl.onCloseClick(id)"
+>
+</weather-item>
