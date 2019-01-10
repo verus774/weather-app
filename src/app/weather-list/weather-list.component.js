@@ -19,8 +19,8 @@ class controller {
             });
     }
 
-    onCloseClick(id) {
-        this.weathers = this.weathers.filter(item => item.id !== id);
+    onCloseClick(idx) {
+        this.weathers.splice(idx, 1);
     }
 }
 

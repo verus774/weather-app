@@ -8,6 +8,6 @@
 <weather-item
         ng-repeat="weather in $ctrl.weathers track by $index"
         weather="weather"
-        on-close="$ctrl.onCloseClick(id)"
+        on-close="$ctrl.onCloseClick($index)"
 >
 </weather-item>
