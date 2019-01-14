@@ -1,0 +1,6 @@
+<label for="location">Location: </label>
+<select name="location" id="location" ng-model="currLocation">
+    <option ng-repeat="location in locations" value="{{location}}">{{location}}</option>
+</select>
+
+<button ng-click="onAddClick(currLocation)">Add</button>
