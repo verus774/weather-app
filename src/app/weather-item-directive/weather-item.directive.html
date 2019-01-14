@@ -1,0 +1,6 @@
+<article class="weather-item">
+    <div>{{ weather.location }}</div>
+    <img ng-src="{{weather.img}}" alt="{{weather.location}}">
+    <div>{{ weather.temp }} ℃</div>
+    <button class="close-btn" ng-click="onCloseClick(weather)">×</button>
+</article>
