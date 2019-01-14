@@ -6,6 +6,7 @@ import WeatherItemComponent from './weather-item/weather-item.component';
 import WeatherListComponent from './weather-list/weather-list.component';
 import LocationSelectComponent from './location-select/location-select.component';
 import WeatherItemDirective from './weather-item-directive/weather-item.directive';
+import WeatherListDirective from './weather-list-directive/weather-list.directive';
 
 angular.module('weather-app', [])
     .factory('weatherService', weatherService)
@@ -13,4 +14,5 @@ angular.module('weather-app', [])
     .component('weatherItem', WeatherItemComponent)
     .component('weatherList', WeatherListComponent)
     .component('locationSelect', LocationSelectComponent)
-    .directive('weatherItemDir', WeatherItemDirective);
+    .directive('weatherItemDir', WeatherItemDirective)
+    .directive('weatherListDir', WeatherListDirective);

@@ -1,0 +1,8 @@
+<location-select on-location-select="onLocationSelect(location)"></location-select>
+
+<weather-item-dir
+        ng-repeat="weather in weathers track by $index"
+        weather="weather"
+        on-close="onCloseClick($index)"
+>
+</weather-item-dir>
