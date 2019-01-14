@@ -19,6 +19,10 @@ export default ($rootScope, weatherService) => {
                 scope.locations.push(data.location);
             });
 
+            scope.$on('$destroy', () => {
+                scope.onWeatherCloseUnsub();
+            });
+
             scope.onAddClick = () => {
                 if (scope.currLocation) {
                     scope.locations = scope.locations.filter(item => item !== scope.currLocation);
