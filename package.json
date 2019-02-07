@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open chrome",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "webdriver-update": "webdriver-manager update --gecko=false",
+    "protractor": "protractor"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,8 @@
     "css-loader": "^2.1.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jasmine-core": "^3.3.0",
+    "protractor": "^5.4.2",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.28.1",
